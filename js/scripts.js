@@ -19,6 +19,9 @@ function Ticket(name, age, title, time) {
   this.movieTime = time;
 }
 
+Ticket.prototype.output = function() {
+  return this.userName + ", age " + this.userAge + ", your movie, " + this.movieTitle + ", will air this " + this.movieTime + " and will cost " + ticketPrice + " dollars.";
+}
 
 // user interface logic
 $(document).ready(function() {
@@ -27,14 +30,13 @@ $(document).ready(function() {
     ticketPrice = 10;
     gatherInfo();
     var newTicket = new Ticket(inputName, inputAge, inputTitle, inputTime);
-    if (newTicket.userAge >= 60 || newTicket.movieTitle == "monster" || newTicket.movieTime == "morning") {
+    if (newTicket.userAge >= 60 || newTicket.movieTitle == "Monster's Inc" || newTicket.movieTime == "morning") {
       ticketPrice -= 3;
     };
-    if (newTicket.movieTime == "evening" || newTicket.movieTitle == "starwars") {
+    if (newTicket.movieTime == "evening" || newTicket.movieTitle == "Star Wars") {
       ticketPrice += 3;
     };
-    $("#user-name").text(newTicket.userName);
-    $("#ticket-price").text(ticketPrice);
+    $("#ticket-output").text(newTicket.output());
     $(".ticket-results").show();
     });
 });
