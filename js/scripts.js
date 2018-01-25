@@ -2,7 +2,6 @@ inputName = "";
 inputAge = "";
 inputTitle = "";
 inputTime = "";
-ticketPrice = 10;
 
 function gatherInfo() {
   inputName = $("input#name").val();
@@ -18,12 +17,20 @@ function Ticket(name, age, title, time) {
   this.movieTime = time;
 }
 
-
 $(document).ready(function() {
   $("form#movie-details").submit(function(event) {
     event.preventDefault();
+    ticketPrice = 10;
     gatherInfo();
     var newTicket = new Ticket(inputName, inputAge, inputTitle, inputTime);
-    alert(newTicket.userName);
+    if (newTicket.userAge >= 60 || newTicket.movieTitle == "monster" || newTicket.movieTime == "morning") {
+      ticketPrice -= 3;
+    };
+    if (newTicket.movieTime == "evening" || newTicket.movieTitle == "starwars") {
+      ticketPrice += 3;
+    };
+    $("#user-name").text(newTicket.userName);
+    $("#ticket-price").text(ticketPrice);
+    $(".ticket-results").show();
     });
 });
