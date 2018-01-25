@@ -1,3 +1,5 @@
+// business logic
+
 inputName = "";
 inputAge = "";
 inputTitle = "";
@@ -17,6 +19,8 @@ function Ticket(name, age, title, time) {
   this.movieTime = time;
 }
 
+
+// user interface logic
 $(document).ready(function() {
   $("form#movie-details").submit(function(event) {
     event.preventDefault();
